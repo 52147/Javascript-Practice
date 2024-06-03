@@ -36,7 +36,8 @@ const payload = {
 }
 
 // define a secret key
-const secretKey = 'your_secrey_key'
+// use environment variable to protect secret key
+const secretKey = process.env.JWT_SECRET
 
 // generate a token
 const token = jwt.sign(payload, secretKey,{expiresIn: '1h'});
@@ -94,3 +95,5 @@ const authenticateToken = (req, res, next) => {
 app.listen(3000, () => {
     console.log('Server running at http://localhost/3000');
 })
+
+// https://github.com/52147/AugMend-Health-Backend/blob/main/routes/auth.js#L22
